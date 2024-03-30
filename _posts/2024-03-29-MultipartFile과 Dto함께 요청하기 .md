@@ -115,7 +115,7 @@ public class JwtAuthenticationFilter extends GenericFilterBean {
 
 ---
 
-# 의심 되는 상황
+## 의심 되는 상황
 
 <br>
 
@@ -162,7 +162,7 @@ public class JwtAuthenticationFilter extends GenericFilterBean {
 
 <br>
 
-# 또 다른 문제
+## 또 다른 문제
 
 
 <br>
@@ -245,13 +245,13 @@ status : 415
 
 <br>
 
-해당 415과 400을 번갈아 가며 만나고 구글과 GPT를 혹사해가며 해결하려 했지만 방법을 찾기 못해서 다른 해결방안을 찾았다.
+해당 415와 400을 번갈아 가며 만나고 많은 시간을 써가며 해결하려 했지만 방법을 찾기 못해서 다른 해결 방안을 찾았다.
 
 <br>
 
 ---
 
-# 해결
+## 해결
 
 
 바로 `@ModelAttribute`를 사용해서 해결하는 방법!!
@@ -287,7 +287,7 @@ public class RoomPostController {
 }
 ```
 
-요청 타입은 프론트에서 `fromData` 그대로 받이주고 `RoomPostRequest`을 `@ModelAttribute`로 해 주었다.
+요청 타입은 프론트에서 `fromData` 그대로 받아주고 `RoomPostRequest`을 `@ModelAttribute`로 해 주었다.
 
 <br>
 

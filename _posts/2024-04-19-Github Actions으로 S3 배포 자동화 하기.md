@@ -183,10 +183,10 @@ jobs:
         uses: actions/cache@v1
         with:
           path: node_modules
-          key: {% raw %}{{ runner.OS }}{% endraw %}-build- {% raw %}{{ hashFiles('**/package-lock.json') }}{% endraw %}
+          key: {% raw %}${{ runner.OS }}{% endraw %}-build- {% raw %}${{ hashFiles('**/package-lock.json') }}{% endraw %}
           restore-keys: |
-            {% raw %}{{ runner.OS }}{% endraw %}-build-
-            {% raw %}{{ runner.OS }}{% endraw %}-
+            {% raw %}${{ runner.OS }}{% endraw %}-build-
+            {% raw %}${{ runner.OS }}{% endraw %}-
 
 
       - name: Install Dependencies # 의존성 패키지 설치
@@ -199,8 +199,8 @@ jobs:
 
       - name: Deploy # S3에 배포
         env:
-          AWS_ACCESS_KEY_ID: {% raw %}{{ secrets.AWS_S3_ACCESS_KEY_ID }}{% endraw %}
-          AWS_SECRET_ACCESS_KEY: {% raw %}{{ secrets.AWS_S3_SECRET_ACCESS_KEY_ID }}{% endraw %}
+          AWS_ACCESS_KEY_ID: {% raw %}${{ secrets.AWS_S3_ACCESS_KEY_ID }}{% endraw %}
+          AWS_SECRET_ACCESS_KEY: {% raw %}${{ secrets.AWS_S3_SECRET_ACCESS_KEY_ID }}{% endraw %}
         run: |
           aws s3 cp \
             --recursive \
@@ -235,13 +235,13 @@ jobs:
 
 <br>
 
--  `{% raw %}{{ runner.OS }}{% endraw %}` : `Workflow`에서 사용되는 매크로 중 하나로, 현재 실행 중인 `러너(runner)`의 `운영 체제(OS)`를 나타낸다.
+-  `{% raw %}${{ runner.OS }}{% endraw %}` : `Workflow`에서 사용되는 매크로 중 하나로, 현재 실행 중인 `러너(runner)`의 `운영 체제(OS)`를 나타낸다.
   -  별도 세팅이 필요 없는 기본 환경 변수.
 
 <br>
 
--  `{% raw %}{{ secrets.AWS_S3_ACCESS_KEY_ID }}{% endraw %}`
--  `{% raw %}{{ secrets.AWS_S3_SECRET_ACCESS_KEY_ID }}{% endraw %}`
+-  `{% raw %}${{ secrets.AWS_S3_ACCESS_KEY_ID }}{% endraw %}`
+-  `{% raw %}${{ secrets.AWS_S3_SECRET_ACCESS_KEY_ID }}{% endraw %}`
   -  이 두개는 `S3`에 접근할 수 있는 `ACCESS KEY`값 이므로 사용자가 따로 환경 변수 세팅을 해줘야 한다.
 
 <br>

@@ -162,7 +162,7 @@ VITE_APP_API_URL=https://api.yongjun.store
 
 <br>
 
-```yml
+```shell
 name: main Build
 
 on:
@@ -228,6 +228,8 @@ jobs:
 #### 환경 변수
 
 <br>
+
+
 
 위 코드를 보면 `${{ }}` 감싸진 변수들을 볼 수 있는데, `GitHub Actions`에서 민감 정보를 관리할 수 있는 현경 변수를 세팅한 것이다.
 

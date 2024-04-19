@@ -162,6 +162,8 @@ VITE_APP_API_URL=https://api.yongjun.store
 
 <br>
 
+<span style="color: #FF4500; font-size: 25px;">!!주의 리퀴드(Liquid) 템플릿 엔진 때문에 `$` 문자를 사용하면 뒤에 `{{ }}` 부분이 화면에 표시되지 않는다... 모든 `{{ }}` 앞에 `$` 붙여 줘야 한다.!!</span>
+
 ```yml
 name: main Build
 
@@ -183,10 +185,10 @@ jobs:
         uses: actions/cache@v1
         with:
           path: node_modules
-          key: \\${{ runner.OS }}-build-\\$\\{\\{ hashFiles('**/package-lock.json') \\}\\}
+          key: {{ runner.OS }}-build-{{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
+            {{ runner.OS }}-build-
+            {{ runner.OS }}-
 
 
       - name: Install Dependencies # 의존성 패키지 설치
@@ -199,8 +201,8 @@ jobs:
 
       - name: Deploy # S3에 배포
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_S3_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_S3_SECRET_ACCESS_KEY_ID }}
+          AWS_ACCESS_KEY_ID: {{ secrets.AWS_S3_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: {{ secrets.AWS_S3_SECRET_ACCESS_KEY_ID }}
         run: |
           aws s3 cp \
             --recursive \
@@ -231,17 +233,17 @@ jobs:
 
 
 
-위 코드를 보면 `${{ }}` 감싸진 변수들을 볼 수 있는데, `GitHub Actions`에서 민감 정보를 관리할 수 있는 현경 변수를 세팅한 것이다.
+위 코드를 보면 `{{ }}` 감싸진 변수들을 볼 수 있는데, `GitHub Actions`에서 민감 정보를 관리할 수 있는 현경 변수를 세팅한 것이다.
 
 <br>
 
--  `${{ runner.OS }}` : `Workflow`에서 사용되는 매크로 중 하나로, 현재 실행 중인 `러너(runner)`의 `운영 체제(OS)`를 나타낸다.
+-  `{{ runner.OS }}` : `Workflow`에서 사용되는 매크로 중 하나로, 현재 실행 중인 `러너(runner)`의 `운영 체제(OS)`를 나타낸다.
   -  별도 세팅이 필요 없는 기본 환경 변수.
 
 <br>
 
--  `${{ secrets.AWS_S3_ACCESS_KEY_ID }}`
--  `${{ secrets.AWS_S3_SECRET_ACCESS_KEY_ID }}`
+-  `{{ secrets.AWS_S3_ACCESS_KEY_ID }}`
+-  `{{ secrets.AWS_S3_SECRET_ACCESS_KEY_ID }}`
   -  이 두개는 `S3`에 접근할 수 있는 `ACCESS KEY`값 이므로 사용자가 따로 환경 변수 세팅을 해줘야 한다.
 
 <br>

@@ -119,36 +119,36 @@ VITE_APP_API_URL=https://api.yongjun.store
 
 <br>
 
-1. Workflow
+1 . Workflow
 - `event`를 기반으로 동작하며 `컨테이너`이자 최상위 요소
 - `yml`형식으로 작성하고 프로젝트의 `.github/workflows`경로에 `yml`로 생성된다.
 
 <br>
 
-2. Job
+2 . Job
 - 작업을 시행하는 요소. 여러 `step`으로 구성되어 있다.
 - 다른 작업과 의존성관계를 나타낼 수 있고 병렬 실행도 가능하다.
 
 <br>
 
-3. Step
+3 . Step
 - `Job`을 구성하는 작업 단위 이며, 여러 `Tesk`로 구성
 - `Shell`이나 `Script`로 명령을 입력할 수 있고  `action`을 실행할 수도 있다.
 
 <br>
 
-4. Action
+4 . Action
 - `marketplace`에서 제공하는 `Action`을 사용할 수 있고 직접 작성해서 사용할 수도 있다.
 - `재사용`이 가능하다.
 
 <br>
 
-5. Event
+5 . Event
 - 실행될 `조건(Trigger)`를 나타냄
 
 <br>
 
-6. Runner(Enviroment)
+6 . Runner(Enviroment)
 - 환경을 정의 해준다.
 - `직접 호스팅(self-hosted runner)`을 해줄 수도, github에서 제공해 주는 `github-hosted runner`를 사용할 수도 있다.
 

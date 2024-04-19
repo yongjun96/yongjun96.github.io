@@ -162,7 +162,7 @@ VITE_APP_API_URL=https://api.yongjun.store
 
 <br>
 
-```shell
+```yml
 name: main Build
 
 on:
@@ -183,10 +183,10 @@ jobs:
         uses: actions/cache@v1
         with:
           path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+          key: \${{ runner.OS }}-build-\${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
+            \${{ runner.OS }}-build-
+            \${{ runner.OS }}-
 
 
       - name: Install Dependencies # 의존성 패키지 설치
@@ -199,8 +199,8 @@ jobs:
 
       - name: Deploy # S3에 배포
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_S3_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_S3_SECRET_ACCESS_KEY_ID }}
+          AWS_ACCESS_KEY_ID: \${{ secrets.AWS_S3_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: \${{ secrets.AWS_S3_SECRET_ACCESS_KEY_ID }}
         run: |
           aws s3 cp \
             --recursive \

@@ -1,6 +1,6 @@
 ---
 categories: [BackEnd, Github Action, CI/CD]
-tags: [Backend, Github Action, Docker, docker-compose, CI/CD]
+tags: [BackEnd, Github Action, S3, 환경변수, CI/CD]
 ---
 
 # Github 와 Github Actions을 이용한 CI/CD 구축

@@ -1,6 +1,6 @@
 ---
-categories: [개발, backEnd, Rest Docs, Swagger]
-tags: [backend, test, Circular Rest Docs, spring, Swagger]		# TAG는 반드시 소문자로 이루어져야함!
+categories: [BackEnd, Rest Docs, Swagger]
+tags: [BackEnd, Test, Circular Rest Docs, Spring, Swagger]		# TAG는 반드시 소문자로 이루어져야함!
 ---
 
 # RestDocs + Swagger란?

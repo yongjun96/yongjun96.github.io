@@ -1,6 +1,6 @@
 ---
-categories: [개발, frontEnd, MultipartFile]
-tags: [backend, frontend, MultipartFile, springboot]		# TAG는 반드시 소문자로 이루어져야함!
+categories: [FrontEnd, MultipartFile]
+tags: [FrontEnd, MultipartFile, SpringBoot]
 ---
 
 

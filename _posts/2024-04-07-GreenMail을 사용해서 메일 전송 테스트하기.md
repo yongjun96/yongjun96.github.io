@@ -1,6 +1,6 @@
 ---
-categories: [개발, backEnd, GreenMail]
-tags: [backend, test, GreenMail, springboot]		# TAG는 반드시 소문자로 이루어져야함!
+categories: [BackEnd, GreenMail]
+tags: [BackEnd, Test, GreenMail, SpringBoot]
 ---
 
 # GreenMail

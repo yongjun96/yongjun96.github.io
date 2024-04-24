@@ -1,6 +1,6 @@
 ---
-categories: [개발, backEnd, Circular References]
-tags: [backend, test, Circular References, spring]		# TAG는 반드시 소문자로 이루어져야함!
+categories: [BackEnd, Circular References]
+tags: [BackEnd, Test, Circular References, Spring]
 ---
 
 # 순환 참조 문제 발생

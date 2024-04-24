@@ -277,7 +277,7 @@ git merge origin/main
 
 <br>
 
-`note`에 토큰의 이름을 입력해 주고 `repo`관한만 체크해 준 후, 원하는 `Expiration` 토큰 기한을 설정해 준다.  
+`note`에 토큰의 이름을 입력해 주고 `repo`권한만 체크해 준 후, 원하는 `Expiration` 토큰 기한을 설정해 준다.  
 `No expiration`를 선택하면 기한 없이 계속 유효한 토큰이 생성되지만 보안상 추천하지 않는다.
 
 <br>
@@ -725,7 +725,7 @@ docker run -it --link redis:redis --rm redis redis-cli -h redis -p 6379
 
 <br>
 
-`--link redis:redis`해당 옵션은 `구식`이기 때문에 사용을 권장하지는 않지만, 간단한 테스트를 할 때는 사용하기는 좋다.  
+`--link redis:redis`해당 옵션은 `구식`이기 때문에 사용을 권장하지는 않지만, 간단한 테스트를 할 때는 사용하기 좋다.  
 
 <br>
 

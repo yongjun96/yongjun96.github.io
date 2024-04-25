@@ -76,7 +76,7 @@ tags: [BackEnd, Github Action, Docker, docker-compose, CI/CD]
 
 <br>
 
-여기끼지 `CD`를 구성하기 위한 `yml`파일을 미리 만들어 두었다.  
+여기끼지 `CI/CD`를 구성하기 위한 `yml`파일을 미리 만들어 두었다.  
 다음으로는 `환경을 구성`하기 위한 `사전 작업`을 `진행`해야 한다.
 
 <br>
@@ -412,7 +412,7 @@ cat id_rsa
 #### yml 작성
 
 - 이제 사전 세팅은 끝났다.
-- `GitHub Actions`를 사용하기 위해 `yml`에 `CD`명령을 구성하면 된다.
+- `GitHub Actions`를 사용하기 위해 `yml`에 `CI/CD`명령을 구성하면 된다.
 
 <br>
 

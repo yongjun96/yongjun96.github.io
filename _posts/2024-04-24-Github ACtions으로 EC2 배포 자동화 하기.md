@@ -733,7 +733,7 @@ docker run -it --link redis:redis --rm redis redis-cli -h redis -p 6379
 
 <br>
 
-### 마무리
+### 배포 해보기
 
 <br>
 

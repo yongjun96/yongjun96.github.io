@@ -77,23 +77,46 @@ tags: [BackEnd, OFFSET & LIMIT, Paging]
 
 1 - NoOffset 방식
 - NoOffset 방식은 `SNS인 유튜브나 인스타그램`에서 사용하는 스크롤 페이징 UI에 많이 사용된다.
-- 기존 페이징 방식은 `페이지 번호(offset)`와 `페이지 사이즈(limit)`기반 이지만   
-  조회 시작 부분을 `인덱스`로 찾고 `매번 첫 페이지를 읽도록` 하는 방식 
+- 기존 페이징 방식은 `조회 페이지 첫 데이터 ID(offset)`와 `페이지 사이즈(limit)`기반 이지만   
+  조회 시작 부분과 조회 끝 부분을 `인덱스`로 찾고 `매번 첫 페이지를 읽도록` 하는 방식 
+
+```mysql
+SELECT * 
+FROM room_post
+WHERE 조건문
+AND 첫 번째 id < 마지막 id 
+ORDER BY id DESC
+LIMIT 페이지사이즈 
+```
 
 <br>
 
 2 - 커버링 인덱스
 - 필요한 모든 데이터가 `인덱스`에서만 추출할 수 있도록 하는 방식
-- `NoOffset`은 `페이지 번호(offset)`를 사용하지 않고 `인덱스`의 범위를 따로 지정해 줘야 하지만, 
+- `NoOffset`은 `조회 페이지 첫 데이터 ID(offset)`를 사용하지 않고 `인덱스`의 범위를 따로 지정해 줘야 하지만, 
   `커버링 인덱스`는 필요한 모든 데이터를 포함할 수 있다.
+
+```mysql
+SELECT *
+FROM room_post as rp
+JOIN (
+	SELECT id
+	FROM room_post
+	WHERE 조건문
+	ORDER BY id DESC
+	OFFSET 조회 페이지 첫 데이터 ID
+	LIMIT 페이지사이즈
+) as rpids
+ON rpids.id = rp.id
+```
 
 <br>
 
 해결 방안으로 <span style="color: #4682B4;">**커버링 인덱스 방식**</span>으로 선택했다.  
-이유는 `NoOffset 방식`은 `페이지 번호(offset)`를 사용하지 않고 `인덱스의 범위`를 지정해 줘야 하기 때문에 
+이유는 `NoOffset 방식`은 `조회 페이지 첫 데이터 ID(offset)`를 사용하지 않고 `인덱스의 범위`를 지정해 줘야 하기 때문에 
 구조를 수정해야 한다는 번거로움이 존재했다.  
 
-반면 `커버링 인덱스`는 현재 `페이지 번호(offset)`와 `페이지 사이즈(limit)`를 그대로 사용할 수 있기에 선택했다.
+반면 `커버링 인덱스`는 현재 `조회 페이지 첫 데이터 ID(offset)`와 `페이지 사이즈(limit)`를 그대로 사용할 수 있기에 선택했고, 스크롤 페이징 UI가 아닌 `pagination Bar`를 이용하고 있기 때문에 선택했다.
 
 <br>
 
@@ -116,21 +139,6 @@ List<RoomPost> roomPostList = jpaQueryFactory
 
 
 <br>
-
-```mysql
-SELECT *
-FROM room_post as rp
-JOIN (
-	SELECT id
-	FROM room_post
-	WHERE 조건문
-	ORDER BY id DESC
-	OFFSET 페이지번호
-	LIMIT 페이지사이즈
-) as rpids
-ON rpids.id = rp.id
-```
-`커버링 인덱스`을 구성하기 위한 쿼리문  
 
 보통 `SELECT`절은 너무 많은 컬럼을 인덱스로 포함시킬 수 있어서 `JOIN`에서 `커버링 인덱스`를 작성하는데 `room_post`의 `id`를 인덱스로 활용했다.  
 

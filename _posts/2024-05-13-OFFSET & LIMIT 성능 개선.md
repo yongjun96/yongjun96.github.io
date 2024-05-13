@@ -78,9 +78,9 @@ tags: [BackEnd, OFFSET & LIMIT, Paging]
 1 - NoOffset 방식
 - NoOffset 방식은 `SNS인 유튜브나 인스타그램`에서 사용하는 스크롤 페이징 UI에 많이 사용된다.
 - 기존 페이징 방식은 `조회 페이지 첫 데이터 ID(offset)`와 `페이지 사이즈(limit)`기반 이지만   
-  조회 시작 부분과 조회 끝 부분을 `인덱스`로 찾고 `매번 첫 페이지를 읽도록` 하는 방식 
+  조회 시작 부분과 조회 끝 부분을 `인덱스`로 찾고 `매번 첫 페이지를 읽도록` 하는 방식  
 
-```mysql
+```sql
 SELECT * 
 FROM room_post
 WHERE 조건문
@@ -89,14 +89,15 @@ ORDER BY id DESC
 LIMIT 페이지사이즈 
 ```
 
+
 <br>
 
 2 - 커버링 인덱스
 - 필요한 모든 데이터가 `인덱스`에서만 추출할 수 있도록 하는 방식
 - `NoOffset`은 `조회 페이지 첫 데이터 ID(offset)`를 사용하지 않고 `인덱스`의 범위를 따로 지정해 줘야 하지만, 
-  `커버링 인덱스`는 필요한 모든 데이터를 포함할 수 있다.
+  `커버링 인덱스`는 필요한 모든 데이터를 포함할 수 있다.  
 
-```mysql
+```sql
 SELECT *
 FROM room_post as rp
 JOIN (

@@ -1,6 +1,6 @@
 ---
-categories: [BackEnd, Paging, OFFSET & LIMIT]
-tags: [BackEnd, OFFSET & LIMIT, Paging, Troubleshooting]
+categories: [BackEnd, Paging, OFFSET/LIMIT]
+tags: [BackEnd, OFFSET/LIMIT, Paging, Troubleshooting]
 ---
 
 ## OFFSET & LIMIT의 문제점

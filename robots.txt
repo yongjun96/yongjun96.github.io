@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yongjun96.github.io/

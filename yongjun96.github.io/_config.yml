@@ -31,8 +31,11 @@ github_username:  jekyll
 
 # Build settings
 theme: minima
+
+# 검색 노출을 위한 사이트맵 추가
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 
 # Exclude from processing.
 # The following items will not be processed, by default.

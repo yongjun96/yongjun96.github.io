@@ -1,6 +1,6 @@
 ---
 categories: [BackEnd, Kotlin, JetBrains]
-tags: [Kotlin, 변수]
+tags: [Kotlin]
 ---
 
 <br>
